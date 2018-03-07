@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# ------------------------------------------------------------------------------
+# Terminal controls escape sequences
+# http://www.termsys.demon.co.uk/vtansi.htm
+# ------------------------------------------------------------------------------
+
+# Dynamic titles http://tldp.org/HOWTO/Xterm-Title-3.html
+if [ "$1" == "icon" ]; then
+    echo -n -e '\033]1; '$2'\007'
+
+elif [ "$1" == "window" ]; then
+    echo -n -e '\033]2; '$2'\007'
+
+elif [ "$1" == "all" ]; then
+    echo -n -e '\033]0; '$2'\007'
+
+else
+    echo "Unknown dynamic title type \`$1'."
+    echo "Valid options are 'icon', 'window', 'all'."
+
+fi
+

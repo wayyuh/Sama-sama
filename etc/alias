@@ -1,0 +1,23 @@
+# http://superuser.com/questions/183876/how-do-i-get-ls-color-auto-to-work-on-mac-os-x
+ls --color >& /dev/null && a ls "ls --color -h " || a ls "ls -G -h"
+a l     "ls"
+a ll    "l -l"
+a la    "l -a"
+a lla   "l -la"
+
+a his   "history"
+
+a m     "more"
+
+a vi    "vim -v"
+a v     "vi"
+
+a ssh   "ssh -X"
+
+a stw   "sed -i.bak -e "'"s/[[:space:]]*$//"'
+
+a tab_name  "xterm_title icon"
+a term_name "xterm_title window"
+
+a dkr_prune "yes | docker container prune && yes | docker image prune"
+a dkr_bash "docker run -it --entrypoint /bin/bash"

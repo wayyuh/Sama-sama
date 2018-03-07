@@ -1,0 +1,29 @@
+[push]
+default = simple
+
+[alias]
+co = checkout
+ci = commit
+st = status 
+br = branch
+df = diff
+
+# http://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
+his =  log --graph \
+           --abbrev-commit \
+           --decorate \
+           --date=relative \
+           --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim)- %an%C(reset)%C(bold yellow)%d%C(reset)' \
+           --all \
+           --max-count=20
+
+
+lg = log --name-only --max-count=8
+
+undo = reset HEAD~
+last = log --name-status HEAD^..HEAD
+
+fm = fetch origin master:master
+fn = "!f() { git fetch $1 next; }; f"
+
+pfm = push origin HEAD:refs/for/master

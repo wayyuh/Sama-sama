@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# ----------------------------------------------------------------------------- 
+# Grab file
+# ----------------------------------------------------------------------------- 
+
+FILE=$1
+
+if [ -z "$FILE" ]; then 
+    echo "No file path given."
+    exit 1
+
+elif [ ! -e $FILE ]; then 
+    echo "File '$FILE' does not exist."
+    exit 1
+
+fi
+
+# ----------------------------------------------------------------------------- 
+# Detect available tool
+# ----------------------------------------------------------------------------- 
+
+if which opendiff >& /dev/null; then
+    TOOL=opendiff
+
+elif which meld >& /dev/null; then
+    TOOL=meld
+
+fi
+
+if [ -z `git diff --name-only $FILE` ]; then
+    echo "File '$FILE' has no modification."
+
+else
+    git difftool --tool $TOOL --no-prompt $FILE &
+
+fi
